@@ -33,6 +33,7 @@ import { Server } from "socket.io";
 import jwt from "jsonwebtoken";
 
 // Load environment variables
+// Load environment variables
 dotenv.config();
 
 // Initialize express app
