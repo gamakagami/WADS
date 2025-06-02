@@ -1,12 +1,13 @@
-const API_BASE_URL = "http://localhost:5000/api/messages";
+import { API_URL } from "../config";
 
+const API_BASE_URL = `${API_URL}/api/messages`;
 /**
  * Get all rooms for the current user
  * @param {string} token - Authentication token
  * @returns {Promise<Object>} User's rooms
  */
 export const getUserRooms = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/user/rooms`, {
+  const res = await fetch(`/api/messages/user/rooms`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -29,7 +30,7 @@ export const getUserRooms = async (token) => {
  * @returns {Promise<Object>} Agents room data
  */
 export const getAgentsRoom = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/agents-room`, {
+  const res = await fetch(`/api/messages/agents-room`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -53,7 +54,7 @@ export const getAgentsRoom = async (token) => {
  * @returns {Promise<Object>} Room messages
  */
 export const getRoomMessages = async (token, roomId) => {
-  const res = await fetch(`${API_BASE_URL}/room/${roomId}`, {
+  const res = await fetch(`/api/messages/room/${roomId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -77,7 +78,7 @@ export const getRoomMessages = async (token, roomId) => {
  * @returns {Promise<Object>} Created room data
  */
 export const createRoom = async (token, roomData) => {
-  const res = await fetch(`${API_BASE_URL}/create-room`, {
+  const res = await fetch(`/api/messages/create-room`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

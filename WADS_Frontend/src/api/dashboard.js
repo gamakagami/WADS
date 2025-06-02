@@ -1,5 +1,6 @@
-const API_BASE_URL = "http://localhost:5000/api/dashboard";
+import { API_URL } from "../config";
 
+const API_BASE_URL = `${API_URL}/api/dashboard`;
 // USER DASHBOARD
 /**
  * Fetch recent user tickets
@@ -7,7 +8,7 @@ const API_BASE_URL = "http://localhost:5000/api/dashboard";
  * @returns {Promise<Object>} The response JSON containing recent user tickets
  */
 export const getUserRecentTickets = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/recent-user-ticket`, {
+  const res = await fetch(`/api/dashboard/recent-user-ticket`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -32,7 +33,7 @@ export const getUserRecentTickets = async (token) => {
  * @returns {Promise<Object>} The response JSON containing agent statistics for the logged in agent
  */
 export const getAgentStats = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/agent-stats`, {
+  const res = await fetch(`/api/dashboard/agent-stats`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -55,7 +56,7 @@ export const getAgentStats = async (token) => {
  * @returns {Promise<Object>} The response JSON containing ticket status for the logged in agent
  */
 export const getAgentTicketStatus = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/agent/ticket-status`, {
+  const res = await fetch(`/api/dashboard/agent/ticket-status`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -78,7 +79,7 @@ export const getAgentTicketStatus = async (token) => {
  * @returns {Promise<Object>} The response JSON containing recent tickets assigned to an agent
  */
 export const getAgentRecentTickets = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/recent-agent-ticket`, {
+  const res = await fetch(`/api/dashboard/recent-agent-ticket`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -103,7 +104,7 @@ export const getAgentRecentTickets = async (token) => {
  * @returns {Promise<Object>} The response JSON containing global tatistics
  */
 export const getGlobalStats = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/global-stats`, {
+  const res = await fetch(`/api/dashboard/global-stats`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -126,7 +127,7 @@ export const getGlobalStats = async (token) => {
  * @returns {Promise<Object>} The response JSON containing recent activity information
  */
 export const getRecentActivity = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/recent-activity`, {
+  const res = await fetch(`/api/dashboard/recent-activity`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -149,7 +150,7 @@ export const getRecentActivity = async (token) => {
  * @returns {Promise<Object>} The response JSON containing recent ticket information
  */
 export const getRecentTicketsGlobal = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/recent-ticket`, {
+  const res = await fetch(`/api/dashboard/recent-ticket`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -174,7 +175,7 @@ export const getRecentTicketsGlobal = async (token) => {
  * @returns {Promise<Object>} The response JSON containing overall agent performance
  */
 export const getAgentPerformance = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/agent-performance`, {
+  const res = await fetch(`/api/dashboard/agent-performance`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -199,7 +200,7 @@ export const getAgentPerformance = async (token) => {
  * @returns {Promise<Object>} The response JSON containing system response times
  */
 export const getResponseTime = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/response-time`, {
+  const res = await fetch(`/api/dashboard/response-time`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -224,7 +225,7 @@ export const getResponseTime = async (token) => {
  * @returns {Promise<Object>} The response JSON containing information about server uptime/downtime
  */
 export const getServerUptime = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/server-uptime`, {
+  const res = await fetch(`/api/dashboard/server-uptime`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

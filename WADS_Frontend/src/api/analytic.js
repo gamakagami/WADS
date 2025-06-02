@@ -1,4 +1,6 @@
-const API_BASE_URL = "http://localhost:5000/api/analytics";
+import { API_URL } from "../config";
+
+const API_BASE_URL = `${API_URL}/api/analytics`;
 
 /**
  * Fetch global statistics (tickets, users, feedback)
@@ -6,7 +8,7 @@ const API_BASE_URL = "http://localhost:5000/api/analytics";
  * @returns {Promise<Object>} The response JSON containing global statistics
  */
 export const getGlobalStats = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/performance`, {
+  const res = await fetch(`api/analytics/performance`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -30,7 +32,7 @@ export const getGlobalStats = async (token) => {
  * @returns {Promise<Object>} The response JSON containing performance metrics
  */
 export const getPerformanceMetrics = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/performance`, {
+  const res = await fetch(`api/analytics/performance`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -55,7 +57,7 @@ export const getPerformanceMetrics = async (token) => {
  * @returns {Promise<Object>} The response JSON containing all agents' statistics
  */
 export const getAgentMetrics = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/agents`, {
+  const res = await fetch(`api/analytics/agents`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -78,7 +80,7 @@ export const getAgentMetrics = async (token) => {
  * @returns {Promise<Object>} The response JSON containing customer satisfaction data
  */
 export const getCustomerSatisfaction = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/satisfaction`, {
+  const res = await fetch(`api/analytics/satisfaction`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -102,7 +104,7 @@ export const getCustomerSatisfaction = async (token) => {
  * @returns {Promise<Object>} The response JSON containing agent details
  */
 export const getAgentPerformance = async (token, agentId) => {
-  const res = await fetch(`${API_BASE_URL}/agents/${agentId}`, {
+  const res = await fetch(`api/analytics/agents/${agentId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -127,7 +129,7 @@ export const getAgentPerformance = async (token, agentId) => {
  * @returns {Promise<Object>} The response JSON containing response time data
  */
 export const getResponseTime = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/performance/response-time`, {
+  const res = await fetch(`api/analytics/performance/response-time`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -150,7 +152,7 @@ export const getResponseTime = async (token) => {
  * @returns {Promise<Object>} The response JSON containing recent activity
  */
 export const getRecentActivity = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/activity`, {
+  const res = await fetch(`api/analytics/activity`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -173,7 +175,7 @@ export const getRecentActivity = async (token) => {
  * @returns {Promise<Object>} The response JSON containing server uptime data
  */
 export const getServerUptime = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/performance/uptime`, {
+  const res = await fetch(`api/analytics/performance/uptime`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -198,7 +200,7 @@ export const getServerUptime = async (token) => {
  */
 export const getFeedbackTable = async (token, params = {}) => {
   const query = new URLSearchParams(params).toString();
-  const res = await fetch(`${API_BASE_URL}/feedback?${query}`, {
+  const res = await fetch(`api/analytics/feedback?${query}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

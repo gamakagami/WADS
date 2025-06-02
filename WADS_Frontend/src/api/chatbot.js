@@ -1,17 +1,18 @@
-const API_BASE_URL = "http://localhost:5000/api/chat";
+import { API_URL } from "../config";
 
+const API_BASE_URL = `${API_URL}/api/chat`;
 /**
  * New message to AI
  * @param {Object} messageData - The message data
- * @returns {Promise<Object>} The 
+ * @returns {Promise<Object>} The
  */
 
 export const newMessage = async (token, messageData) => {
-  const res = await fetch(`${API_BASE_URL}`, {
+  const res = await fetch(`/api/chat`, {
     method: "POST",
-    headers: { 
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(messageData),
   });
@@ -29,10 +30,10 @@ export const newMessage = async (token, messageData) => {
  * Get chat history with the AI
  * @param {Object} userData - The user registration data
  * @returns {Promise<Object>} The response JSON containing token and user info
-*/
+ */
 
 export const getMessageHistory = async (token) => {
-  const res = await fetch(`${API_BASE_URL}/history`, {
+  const res = await fetch(`/api/chat/history`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

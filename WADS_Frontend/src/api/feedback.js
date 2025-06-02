@@ -1,5 +1,6 @@
-const API_BASE_URL = "http://localhost:5000/api/feedback";
+import { API_URL } from "../config";
 
+const API_BASE_URL = `${API_URL}/api/feedback`;
 export const getAgentFeedbackSummary = async (token, agentId) => {
   const res = await fetch(`${API_BASE_URL}/agents/${agentId}`, {
     method: "GET",
@@ -19,7 +20,7 @@ export const getAgentFeedbackSummary = async (token, agentId) => {
 };
 
 export const getFeedbackForTicket = async (token, ticketId) => {
-  const res = await fetch(`${API_BASE_URL}/tickets/${ticketId}`, {
+  const res = await fetch(`/api/feedback/tickets/${ticketId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -37,7 +38,7 @@ export const getFeedbackForTicket = async (token, ticketId) => {
 };
 
 export const submitFeedback = async (token, ticketId, rating) => {
-  const res = await fetch(`${API_BASE_URL}/tickets/${ticketId}`, {
+  const res = await fetch(`/api/feedback/tickets/${ticketId}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

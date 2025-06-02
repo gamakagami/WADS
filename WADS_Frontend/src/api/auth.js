@@ -1,12 +1,13 @@
-const API_BASE_URL = "http://localhost:5000/api/users";
+import { API_URL } from "../config";
 
+const API_BASE_URL = `${API_URL}/api/users`;
 /**
  * Register a new user
  * @param {Object} userData - The user registration data
  * @returns {Promise<Object>} The response JSON containing token and user info
  */
 export const register = async (userData) => {
-  const res = await fetch(`${API_BASE_URL}`, {
+  const res = await fetch(`/api/users/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userData),
@@ -27,7 +28,7 @@ export const register = async (userData) => {
  * @returns {Promise<Object>} The response JSON containing token and user info
  */
 export const login = async (credentials) => {
-  const res = await fetch(`${API_BASE_URL}/login`, {
+  const res = await fetch(`/api/users/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(credentials),
@@ -49,8 +50,10 @@ export const login = async (credentials) => {
  */
 export const googleLogin = () => {
   // Include frontend callback URL in state parameter
-  const frontendCallbackUrl = 'http://localhost:5173/auth/google/callback';
-  window.location.href = `${API_BASE_URL}/auth/google?state=${encodeURIComponent(frontendCallbackUrl)}`;
+  const frontendCallbackUrl = "http://localhost:5173/auth/google/callback";
+  window.location.href = `${API_BASE_URL}/auth/google?state=${encodeURIComponent(
+    frontendCallbackUrl
+  )}`;
 };
 
 export const getAccessTokenFromRefresh = async () => {
@@ -69,13 +72,13 @@ export const getAccessTokenFromRefresh = async () => {
 };
 
 export const logout = async (token) => {
-  const res = await fetch(`http://localhost:5000/api/auth/logout`, {
+  const res = await fetch(`/api/auth/logout`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    credentials: "include", // include cookie with refresh token
+    credentials: "include",
   });
 
   const data = await res.json();
@@ -85,4 +88,4 @@ export const logout = async (token) => {
   }
 
   return data;
-}
+};
