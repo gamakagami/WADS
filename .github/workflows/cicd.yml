@@ -42,25 +42,29 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Configure Docker Permissions
+      - name: Configure Docker Environment
         run: |
-          # Print current user and groups
+          # Print environment info
+          echo "Current directory: $(pwd)"
           echo "Current user: $(whoami)"
           echo "Current groups: $(groups)"
           echo "User ID info: $(id)"
 
-          # Try to use the CSBI user
-          export DOCKER_HOST=unix:///var/run/docker.sock
-          export DOCKER_GROUP=$(stat -c '%g' /var/run/docker.sock)
+          # Try different Docker socket paths
+          for socket in /var/run/docker.sock /run/user/$(id -u)/docker.sock $XDG_RUNTIME_DIR/docker.sock; do
+            if [ -S "$socket" ]; then
+              echo "Found Docker socket at: $socket"
+              export DOCKER_HOST=unix://$socket
+              break
+            fi
+          done
 
-          # Add current user to docker group if needed
-          if [ ! -z "$DOCKER_GROUP" ]; then
-            sudo usermod -aG $DOCKER_GROUP $USER || true
-            newgrp $DOCKER_GROUP || true
-          fi
+          # List available Docker sockets
+          echo "Available Docker sockets:"
+          find / -name "docker.sock" 2>/dev/null || true
 
-          # Verify docker access
-          docker ps || true
+          # Try to get Docker info
+          docker info || true
 
       - name: Pull Latest Backend Image
         run: docker pull ${{ secrets.DOCKER_USERNAME }}/wads-backend:latest
