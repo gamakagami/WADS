@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
-import TicketPopup from "../../../tickets/TicketPopup";
 import ButtonBlue from "../../../components/app/ButtonBlue";
-import { useState } from "react";
-import { useAuthContext } from "../../contexts/AuthContext";
-import { createTicket } from "../../api/ticket";
+import { useAuthContext } from "../../../contexts/AuthContext";
 import { useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
+import { createTicket } from "../../../api/ticket";
 import toast from "react-hot-toast";
 
 const TicketPopup = ({ handleCancel }) => {
