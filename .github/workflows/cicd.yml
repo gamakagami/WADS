@@ -50,21 +50,14 @@ jobs:
           echo "Current groups: $(groups)"
           echo "User ID info: $(id)"
 
-          # Try different Docker socket paths
-          for socket in /var/run/docker.sock /run/user/$(id -u)/docker.sock $XDG_RUNTIME_DIR/docker.sock; do
-            if [ -S "$socket" ]; then
-              echo "Found Docker socket at: $socket"
-              export DOCKER_HOST=unix://$socket
-              break
-            fi
-          done
+          # Set Docker socket path for usergc5
+          export DOCKER_HOST=unix:///run/user/$(id -u)/docker.sock
 
-          # List available Docker sockets
-          echo "Available Docker sockets:"
-          find / -name "docker.sock" 2>/dev/null || true
-
-          # Try to get Docker info
+          # Verify Docker access
           docker info || true
+
+          # List Docker containers
+          docker ps || true
 
       - name: Pull Latest Backend Image
         run: docker pull ${{ secrets.DOCKER_USERNAME }}/wads-backend:latest
