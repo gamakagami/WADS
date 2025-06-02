@@ -8,7 +8,7 @@ import jwt from "jsonwebtoken";
 export const initializeSocket = (server) => {
   const io = new Server(server, {
     cors: {
-      origin: process.env.CLIENT_URL || "http://localhost:5173",
+      origin: "*",
       methods: ["GET", "POST"],
       credentials: true,
     },
@@ -18,7 +18,7 @@ export const initializeSocket = (server) => {
 
   console.log("Socket.IO server initialized with config:", {
     cors: {
-      origin: process.env.CLIENT_URL || "http://localhost:5173",
+      origin: "*",
       methods: ["GET", "POST"],
       credentials: true,
     },
@@ -147,7 +147,7 @@ export const initializeSocket = (server) => {
       try {
         if (!socket.user) {
           console.error("User not authenticated");
-          if (typeof callback === 'function') {
+          if (typeof callback === "function") {
             callback({ error: "User not authenticated" });
           }
           return;
@@ -155,7 +155,7 @@ export const initializeSocket = (server) => {
 
         if (!content?.trim()) {
           console.error("Message content required");
-          if (typeof callback === 'function') {
+          if (typeof callback === "function") {
             callback({ error: "Message content required" });
           }
           return;
@@ -163,7 +163,7 @@ export const initializeSocket = (server) => {
 
         if (!roomId) {
           console.error("Room ID required");
-          if (typeof callback === 'function') {
+          if (typeof callback === "function") {
             callback({ error: "Room ID required" });
           }
           return;
@@ -187,12 +187,12 @@ export const initializeSocket = (server) => {
         console.log(`Message sent to ${roomId}:`, newMessage);
 
         // Acknowledge successful message if callback is provided
-        if (typeof callback === 'function') {
+        if (typeof callback === "function") {
           callback({ success: true, message: newMessage });
         }
       } catch (error) {
         console.error("Error handling message:", error);
-        if (typeof callback === 'function') {
+        if (typeof callback === "function") {
           callback({ error: "Error sending message" });
         }
       }
