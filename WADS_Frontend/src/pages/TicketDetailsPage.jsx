@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import TicketDetails from "../features/tickets/TicketDetails";
-import getIndividualTicketsQueryOptions from "../queryoptions/getIndividualTicketsQuery";
+import getIndividualTicketsQueryOptions from "../queryOptionsFolders/getIndividualTicketsQuery";
 import { useAuthContext } from "../contexts/AuthContext";
 import CommunicationLog from "../features/tickets/CommunicationLog";
 import DetailHeader from "../features/tickets/DetailHeader";

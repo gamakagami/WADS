@@ -1,6 +1,6 @@
 import DashboardTicketCard from "../../features/dashboard/DashboardTicketCard";
 import DashboardUserCard from "../../features/dashboard/User/DashboardUserCard";
-import { getUserRecentOptions } from "../../queryoptions/getRecentTicketQuery";
+import { getUserRecentOptions } from "../../queryOptionsFolders/getRecentTicketQuery";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import { CiCirclePlus } from "react-icons/ci";

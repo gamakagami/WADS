@@ -4,7 +4,7 @@ import { useSocket } from "../../contexts/SocketContext";
 import { format } from "date-fns";
 import PropTypes from "prop-types";
 import toast from "react-hot-toast";
-import useUpdateTicketStatus from "../../queryoptions/updateTicketStatusQuery";
+import useUpdateTicketStatus from "../../queryOptionsFolders/updateTicketStatusQuery";
 
 function CommunicationLog({
   ticketId,

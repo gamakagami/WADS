@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useSocket } from "../../contexts/SocketContext";
-import { getRoomMessagesQueryOptions } from "../../queryoptions/getForumQuery";
+import { getRoomMessagesQueryOptions } from "../../queryOptionsFolders/getForumQuery";
 import MessageInput from "./MessageInput";
 import MessageArea from "./MessageArea";
 import MessageHeader from "./MessageHeader";

@@ -3,7 +3,7 @@ import NotificationAlert from "./NotificationAlert";
 import {
   getNotificationsQueryOptions,
   getAdminNotificationsQueryOptions,
-} from "../../queryoptions/getNotificationsQuery";
+} from "../../queryOptionsFolder/getNotificationsQuery";
 import { useAuthContext } from "../../contexts/AuthContext";
 
 function NotificationList() {

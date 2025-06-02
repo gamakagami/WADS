@@ -3,7 +3,7 @@ import TicketsTable from "../features/tickets/TicketsTable";
 import TicketPagination from "../features/tickets/TicketPagination";
 import { useQuery } from "@tanstack/react-query";
 import { useAuthContext } from "../contexts/AuthContext";
-import getTicketsQueryOptions from "../queryoptions/getTicketsQuery";
+import getTicketsQueryOptions from "../queryOptionsFolder/getTicketsQuery";
 import { useState } from "react";
 
 export default function Tickets() {

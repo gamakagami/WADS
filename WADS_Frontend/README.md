@@ -5,18 +5,21 @@ A comprehensive helpdesk and ticketing system built for Semesta Medika, a leadin
 ## 🚀 Features
 
 - **Ticket Management**
+
   - Create and track support tickets
   - Priority-based ticket routing
   - Status tracking and updates
   - Ticket categorization by equipment type
 
 - **User Management**
+
   - Role-based access control
   - Customer portal for ticket submission
   - Support agent dashboard
   - Admin management interface
 
 - **Communication**
+
   - Real-time notifications
   - Internal messaging system
   - Email notifications
@@ -33,7 +36,7 @@ A comprehensive helpdesk and ticketing system built for Semesta Medika, a leadin
 - **Data Fetching**: TanStack React Query
 - **Real-time Features**: Socket.IO
 - **Routing**: React Router v7
-- **UI Components**: 
+- **UI Components**:
   - React Hot Toast for notifications
   - Recharts for analytics visualization
 
@@ -47,12 +50,12 @@ src/
 ├── contexts/     # React context providers
 ├── features/     # Feature-specific modules
 │   ├── tickets/  # Ticket management
-│   ├── auth/     # User authentication 
+│   ├── auth/     # User authentication
 │   ├── users/    # User management
 │   └── analytics/# Analytics and reporting
 ├── hooks/        # Custom React hooks
 ├── pages/        # Page components
-├── queryoptions/ # React Query configurations
+├── queryOptionsFolders/ # React Query configurations
 ├── routes/       # Route definitions
 └── utils/        # Utility functions
 ```
