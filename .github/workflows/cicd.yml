@@ -42,6 +42,26 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Configure Docker Permissions
+        run: |
+          # Print current user and groups
+          echo "Current user: $(whoami)"
+          echo "Current groups: $(groups)"
+          echo "User ID info: $(id)"
+
+          # Try to use the CSBI user
+          export DOCKER_HOST=unix:///var/run/docker.sock
+          export DOCKER_GROUP=$(stat -c '%g' /var/run/docker.sock)
+
+          # Add current user to docker group if needed
+          if [ ! -z "$DOCKER_GROUP" ]; then
+            sudo usermod -aG $DOCKER_GROUP $USER || true
+            newgrp $DOCKER_GROUP || true
+          fi
+
+          # Verify docker access
+          docker ps || true
+
       - name: Pull Latest Backend Image
         run: docker pull ${{ secrets.DOCKER_USERNAME }}/wads-backend:latest
 
