@@ -6,7 +6,7 @@ import AppRoutes from "./routes";
 import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
-
+//X
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
