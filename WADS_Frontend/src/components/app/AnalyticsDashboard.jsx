@@ -6,7 +6,7 @@ import RecentActivityCard from "../../features/dashboard/Admin/RecentActivityCar
 import PerformanceMetricsCard from "../../features/dashboard/Admin/PerformanceMetricsCard";
 import AgentPerformanceCard from "../../features/dashboard/Admin/AgentPerformanceCard";
 import { useAdminDashboardContext } from "../../contexts/AdminDashboardContext";
-import { getAdminRecentOptions } from "../../queryOptionsFolders/getRecentTicketQuery";
+import { getAdminRecentOptions } from "../../queryOptionsFolder/getRecentTicketQuery";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import PerformanceCard from "../../features/analytics/PerformanceCard";

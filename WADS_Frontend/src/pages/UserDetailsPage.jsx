@@ -6,7 +6,7 @@ import {
   getUserActivityQueryOptions,
   useUpdateUser,
   useDeleteUser,
-} from "../queryOptionsFolders/individualUsersQuery";
+} from "../queryOptionsFolder/individualUsersQuery";
 import UserActivity from "../features/userManagement/UserActivity";
 import UserDetails from "../features/userManagement/UserDetails";
 

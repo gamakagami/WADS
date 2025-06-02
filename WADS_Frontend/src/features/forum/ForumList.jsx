@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useQuery } from "@tanstack/react-query";
 import { useAuthContext } from "../../contexts/AuthContext";
-import { getUserRoomsQueryOptions } from "../../queryOptionsFolders/getForumQuery";
+import { getUserRoomsQueryOptions } from "../../queryOptionsFolder/getForumQuery";
 import ChatHeader from "./ChatHeader";
 import Message from "./Message";
 

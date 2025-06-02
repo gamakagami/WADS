@@ -2,7 +2,7 @@ import StatisticsCard from "../../features/dashboard/Agent/StatisticsCard";
 import CustomerSatisfactionCard from "../../features/dashboard/CustomerSatisfactionCard";
 import DashboardTicketCard from "../../features/dashboard/DashboardTicketCard";
 import TicketStatusCard from "../../features/dashboard/Agent/TicketStatusCard";
-import { getAgentRecentOptions } from "../../queryOptionsFolders/getRecentTicketQuery";
+import { getAgentRecentOptions } from "../../queryOptionsFolder/getRecentTicketQuery";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import { useAgentDashboardContext } from "../../contexts/AgentDashboardContext";

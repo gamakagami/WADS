@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   getUsersQueryOptions,
   useCreateUsers,
-} from "../queryOptionsFolders/usersQuery";
+} from "../queryOptionsFolder/usersQuery";
 import UserFilter from "../features/userManagement/UserFilter";
 import UserTable from "../features/userManagement/UserTable";
 import TicketPagination from "../features/tickets/TicketPagination";

@@ -10,7 +10,7 @@ import {
   useEnable2FA,
   useVerify2FA,
   useDisable2FA,
-} from "../../queryOptionsFolders/twoFAQuery";
+} from "../../queryOptionsFolder/twoFAQuery";
 
 const TwoFA = () => {
   const { user } = useAuthContext();
