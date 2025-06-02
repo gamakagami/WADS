@@ -1,6 +1,6 @@
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { getTicketFeedbackQueryOptions } from "../../queryOptions/getFeedbackQuery";
+import { getTicketFeedbackQueryOptions } from "../../queryOptionsFolder/getFeedbackQuery";
 import { submitFeedback } from "../../api/feedback";
 import toast from "react-hot-toast";
 import PropTypes from "prop-types";

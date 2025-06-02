@@ -5,11 +5,14 @@ FROM node:alpine3.20 AS builder
 WORKDIR /app
 
 # Copy package files and install dependencies
-COPY package.json ./
+COPY package*.json ./
 RUN npm install
 
 # Copy application files
 COPY . .
+
+# Debug: List files to verify structure
+RUN ls -la src/queryoptions/
 
 # build the application
 RUN npm run build
@@ -23,7 +26,7 @@ COPY client_nginx.conf /etc/nginx/conf.d/default.conf
 # Copy built app to Nginx
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Expose the application port (replace this port with client_port you received)
+# Expose the application port
 EXPOSE 3009
 
 # Command to run the application
