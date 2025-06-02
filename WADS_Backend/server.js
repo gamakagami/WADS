@@ -50,7 +50,7 @@ app.use(helmet());
 // app.use(cors()); //VALUE BEFORE CHANGED TO CREDENTIALS:TRUE
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "*",
     credentials: true,
   })
 );
@@ -87,35 +87,40 @@ app.use(passport.session());
 // Google OAuth routes
 app.get(
   "/api/users/auth/google",
-  passport.authenticate("google", { 
+  passport.authenticate("google", {
     scope: ["profile", "email"],
-    prompt: "select_account"
+    prompt: "select_account",
   })
 );
 
-app.get(
-  "/api/users/auth/google/callback",
-  (req, res, next) => {
-    passport.authenticate("google", { 
+app.get("/api/users/auth/google/callback", (req, res, next) => {
+  passport.authenticate(
+    "google",
+    {
       failureRedirect: "/login",
-      session: false 
-    }, async (err, user, info) => {
+      session: false,
+    },
+    async (err, user, info) => {
       try {
         if (err) {
-          console.error('Google OAuth Error:', err);
-          return res.redirect('http://localhost:5173/login');
+          console.error("Google OAuth Error:", err);
+          return res.redirect("http://localhost:5173/login");
         }
         if (!user) {
-          return res.redirect('http://localhost:5173/login');
+          return res.redirect("http://localhost:5173/login");
         }
 
         // Generate new tokens
         const accessToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-          expiresIn: '12h'
+          expiresIn: "12h",
         });
-        const refreshToken = jwt.sign({ id: user._id }, process.env.REFRESH_TOKEN_SECRET, {
-          expiresIn: '7d'
-        });
+        const refreshToken = jwt.sign(
+          { id: user._id },
+          process.env.REFRESH_TOKEN_SECRET,
+          {
+            expiresIn: "7d",
+          }
+        );
 
         // Save refresh token to user
         user.refreshToken = refreshToken;
@@ -129,9 +134,10 @@ app.get(
           path: "/",
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         });
-        
+
         // Get the frontend callback URL from state
-        const frontendCallbackUrl = req.query.state || 'http://localhost:5173/auth/google/callback';
+        const frontendCallbackUrl =
+          req.query.state || "http://localhost:5173/auth/google/callback";
 
         // Prepare user data with the new access token
         const userData = {
@@ -145,16 +151,17 @@ app.get(
         };
 
         // Redirect to frontend with user data
-        const redirectUrl = `${frontendCallbackUrl}?userData=${encodeURIComponent(JSON.stringify(userData))}`;
+        const redirectUrl = `${frontendCallbackUrl}?userData=${encodeURIComponent(
+          JSON.stringify(userData)
+        )}`;
         return res.redirect(redirectUrl);
-
       } catch (error) {
-        console.error('Token Generation Error:', error);
-        return res.redirect('http://localhost:5173/login');
+        console.error("Token Generation Error:", error);
+        return res.redirect("http://localhost:5173/login");
       }
-    })(req, res, next);
-  }
-);
+    }
+  )(req, res, next);
+});
 
 // API Documentation
 app.use(
