@@ -38,7 +38,7 @@ dotenv.config();
 
 // Initialize express app
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3010;
 app.set("trust proxy", true);
 
 const server = http.createServer(app);
